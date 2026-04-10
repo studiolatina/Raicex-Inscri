@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IV Encuentro ACEBRA 2026 — Rio de Janeiro</title>
+  <meta name="description" content="IV Encuentro de la Asociación de Científicos Españoles en Brasil. Estrategias de Cooperación Brasil-España en Ciencia, Cultura e Innovación. 22 y 23 Junio 2026, Rio de Janeiro.">
+  <link rel="stylesheet" href="https://use.typekit.net/cvw7dfq.css">
+  <style>
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --purple:    #5b3c74;
+      --purple-dk: #3d2750;
+      --purple-lt: #7a559a;
+      --yellow:    #fdec4d;
+      --red:       #e42320;
+      --blue:      #71c0e6;
+      --green:     #39b082;
+      --white:     #ffffff;
+      --off-white: #f5f0f9;
+
+      --font-display: "degular", sans-serif;
+      --font-body:    "akzidenz-grotesk-next", sans-serif;
+
+      --container: 1200px;
+      --radius:    4px;
+      --transition: 220ms ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--purple);
+      color: var(--white);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: "degular", sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    ::selection {
+      background: var(--yellow);
+      color: var(--purple-dk);
+    }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+    }
+
+    /* ============================================================
+       HEADER
+    ============================================================ */
+    #header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 1rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+
+    #header.scrolled {
+      background: var(--purple-dk);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+      padding: 0.65rem 0;
+    }
+
+    #header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .header-logo {
+      flex-shrink: 0;
+      opacity: 0.95;
+      transition: opacity var(--transition);
+    }
+
+    .header-logo:hover {
+      opacity: 1;
+    }
+
+    .header-logo img {
+      height: 44px;
+      width: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--yellow);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a.nav-cta {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.4rem;
+      background: var(--yellow);
+      color: var(--purple);
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-links a.nav-cta::after {
+      display: none;
+    }
+
+    .nav-links a.nav-cta:hover {
+      background: #fff;
+      color: var(--purple);
+      transform: translateY(-1px);
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+    /* Mobile nav overlay */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--purple-dk);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--white);
+      opacity: 0.85;
+      transition: opacity var(--transition), color var(--transition);
+    }
+
+    .mobile-nav a:hover {
+      opacity: 1;
+      color: var(--yellow);
+    }
+
+    .mobile-nav .mobile-cta {
+      margin-top: 1rem;
+      padding: 0.85rem 2.5rem;
+      background: var(--yellow);
+      color: var(--purple-dk);
+      border-radius: var(--radius);
+      font-size: 1.1rem;
+      opacity: 1;
+    }
+
+    .mobile-nav .mobile-cta:hover {
+      background: var(--white);
+      color: var(--purple-dk);
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--purple-dk);
+    }
+
+    /* Decorative background gradient mesh */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 70% at 70% 30%, rgba(91,60,116,0.9) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(61,39,80,0.8) 0%, transparent 55%);
+      z-index: 1;
+    }
+
+    /* Subtle dot-grid texture */
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      z-index: 1;
+    }
+
+    /* Animated geometric linework */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-lines svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Decorative graphic - apoio grafico */
+    .hero-decor {
+      position: absolute;
+      right: -80px;
+      bottom: -60px;
+      width: 55vw;
+      max-width: 680px;
+      opacity: 0.18;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Secondary decorative top-left */
+    .hero-decor-tl {
+      position: absolute;
+      left: -60px;
+      top: 60px;
+      width: 30vw;
+      max-width: 380px;
+      opacity: 0.1;
+      z-index: 1;
+      pointer-events: none;
+      transform: rotate(180deg) scaleX(-1);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      padding: 9rem 0 6rem;
+    }
+
+    .hero-content .container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+    }
+
+    /* Eyebrow tag */
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    /* Main SVG title */
+    .hero-title-svg {
+      width: 100%;
+      max-width: 640px;
+      margin-bottom: 2.4rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.25s forwards;
+    }
+
+    /* Subtitle SVG */
+    .hero-subtitle-wrap {
+      width: 100%;
+      max-width: 560px;
+      margin-top: 32px;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+
+    .hero-subtitle-svg {
+      display: block;
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+    }
+
+    @media (max-width: 768px) {
+      .hero-subtitle-wrap {
+        max-width: 90%;
+      }
+    }
+
+    /* Date / location strip */
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.7s forwards;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .hero-meta-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(253,236,77,0.4);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-meta-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--yellow);
+    }
+
+    .hero-meta-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .hero-meta-value {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+
+    /* CTA */
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.85s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      background: var(--yellow);
+      color: var(--purple-dk);
+      border-radius: var(--radius);
+      border: 2px solid var(--yellow);
+      cursor: pointer;
+      transition: background var(--transition), color var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--yellow);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(253,236,77,0.2);
+    }
+
+    .btn-primary svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+      transition: transform var(--transition);
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(3px);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 1rem 1.8rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.8);
+      border-radius: var(--radius);
+      transition: border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(255,255,255,0.8);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.5s forwards;
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ============================================================
+       SECTION COMMONS
+    ============================================================ */
+    section {
+      padding: 6rem 0;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-family: var(--font-display);
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--yellow);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title span {
+      color: var(--yellow);
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--yellow);
+      margin-bottom: 2rem;
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+    ============================================================ */
+    #about {
+      background: var(--purple);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(253,236,77,0.3), transparent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-left {
+      position: relative;
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-body strong {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .about-stat {
+      padding: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      transition: border-color var(--transition);
+    }
+
+    .about-stat:hover {
+      border-color: rgba(253,236,77,0.3);
+    }
+
+    .about-stat-num {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 2.4rem;
+      color: var(--yellow);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .about-stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.4;
+    }
+
+    .about-right {
+      position: relative;
+    }
+
+    .about-visual {
+      position: relative;
+      border: 1px solid rgba(253,236,77,0.15);
+      border-radius: 2px;
+      padding: 3rem;
+      background: rgba(61,39,80,0.5);
+    }
+
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 2rem;
+      width: 60px;
+      height: 3px;
+      background: var(--yellow);
+    }
+
+    .about-quote {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 1.4rem;
+      line-height: 1.5;
+      color: var(--white);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-quote-attr {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+    }
+
+    .about-tag {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 2px;
+      color: rgba(255,255,255,0.7);
+      transition: border-color var(--transition), color var(--transition);
+    }
+
+    .about-tag:hover {
+      border-color: var(--yellow);
+      color: var(--yellow);
+    }
+
+    /* ============================================================
+       EVENT DETAILS SECTION
+    ============================================================ */
+    #details {
+      background: var(--purple-dk);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #details::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(253,236,77,0.2), transparent);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .detail-card {
+      background: var(--purple-dk);
+      padding: 2.5rem 2rem;
+      transition: background var(--transition);
+      position: relative;
+    }
+
+    .detail-card:hover {
+      background: rgba(91,60,116,0.5);
+    }
+
+    .detail-card-icon {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(253,236,77,0.35);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .detail-card-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--yellow);
+    }
+
+    .detail-card-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.5rem;
+    }
+
+    .detail-card-value {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.2rem;
+      line-height: 1.3;
+      color: var(--white);
+    }
+
+    .detail-card-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.55);
+      margin-top: 0.4rem;
+      line-height: 1.5;
+    }
+
+    .detail-card.accent {
+      background: var(--purple);
+      border-left: 3px solid var(--yellow);
+    }
+
+    /* ============================================================
+       LOCATION SECTION
+    ============================================================ */
+    #location {
+      background: var(--purple);
+      position: relative;
+    }
+
+    .location-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 4rem;
+      align-items: start;
+      margin-top: 3rem;
+    }
+
+    .location-info {
+      position: sticky;
+      top: 100px;
+    }
+
+    .location-address {
+      margin-top: 1.5rem;
+      padding: 1.8rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-left: 3px solid var(--yellow);
+      border-radius: var(--radius);
+    }
+
+    .location-address p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .location-address p strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .location-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.2rem;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+    }
+
+    .location-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--yellow);
+    }
+
+    .map-wrap {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .map-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--yellow);
+      z-index: 2;
+    }
+
+    .map-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 440px;
+      border: none;
+      filter: brightness(0.9) contrast(1.05) saturate(0.9);
+    }
+
+    /* ============================================================
+       ORGANIZERS
+    ============================================================ */
+    #organizers {
+      background: var(--purple-dk);
+      position: relative;
+    }
+
+    #organizers::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(253,236,77,0.2), transparent);
+    }
+
+    .organizers-intro {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .organizers-intro .section-label {
+      justify-content: center;
+    }
+
+    .organizers-intro .section-label::before {
+      display: none;
+    }
+
+    .organizers-intro .section-title {
+      text-align: center;
+    }
+
+    .logos-strip {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logos-strip img {
+      max-width: 100%;
+      height: auto;
+      max-height: 90px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .logos-note {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================================
+       RESOURCES SECTION
+    ============================================================ */
+    #resources {
+      background: var(--purple-dk);
+      position: relative;
+    }
+
+    #resources::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(253,236,77,0.2), transparent);
+    }
+
+    .resources-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 3rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .resource-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      padding: 2.2rem 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      transition: background var(--transition);
+    }
+
+    .resource-block:last-child {
+      border-bottom: none;
+    }
+
+    .resource-block:hover {
+      background: rgba(91,60,116,0.35);
+    }
+
+    .resource-block-left {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .resource-block-number {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 0.4rem;
+      opacity: 0.8;
+    }
+
+    .resource-block-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      color: var(--white);
+      line-height: 1.2;
+    }
+
+    .resource-block-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .btn-resource {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.75rem 1.4rem;
+      background: rgba(255,255,255,0.08);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius);
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+
+    .btn-resource svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+
+    .btn-resource:hover {
+      background: var(--yellow);
+      color: var(--purple-dk);
+      border-color: var(--yellow);
+      transform: translateY(-1px);
+    }
+
+    .btn-resource:hover svg {
+      transform: translateY(1px);
+    }
+
+    @media (max-width: 768px) {
+      .resource-block {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        padding: 1.8rem 1.5rem;
+      }
+
+      .resource-block-buttons {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .btn-resource {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* ============================================================
+       FINAL CTA SECTION
+    ============================================================ */
+    #register {
+      background: var(--purple);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #register::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(253,236,77,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-inner .section-label {
+      justify-content: center;
+    }
+
+    .cta-inner .section-label::before {
+      display: none;
+    }
+
+    .cta-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-headline em {
+      font-style: normal;
+      color: var(--yellow);
+    }
+
+    .cta-body {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-border-top {
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--yellow);
+      margin: 0 auto 2rem;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: var(--purple-dk);
+      padding: 3rem 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img {
+      height: 36px;
+      width: auto;
+      opacity: 0.8;
+    }
+
+    .footer-center {
+      text-align: center;
+    }
+
+    .footer-center p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.35);
+      line-height: 1.6;
+    }
+
+    .footer-center a {
+      color: rgba(255,255,255,0.5);
+      transition: color var(--transition);
+    }
+
+    .footer-center a:hover {
+      color: var(--yellow);
+    }
+
+    .footer-right {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .footer-social {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .footer-social:hover {
+      border-color: var(--yellow);
+      background: rgba(253,236,77,0.1);
+    }
+
+    .footer-social svg {
+      width: 15px;
+      height: 15px;
+      fill: rgba(255,255,255,0.55);
+      transition: fill var(--transition);
+    }
+
+    .footer-social:hover svg {
+      fill: var(--yellow);
+    }
+
+    /* ============================================================
+       ANIMATIONS
+    ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 0.8; transform: scaleY(1.1); }
+    }
+
+    @keyframes lineFloat {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    /* Scroll-reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .location-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .location-info {
+        position: static;
+      }
+
+      .map-wrap iframe {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 4rem 0;
+      }
+
+      .nav-links,
+      .nav-cta {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hero-content {
+        padding: 8rem 0 5rem;
+      }
+
+      .hero-decor {
+        width: 90vw;
+        right: -30px;
+        opacity: 0.12;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .footer-right {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .btn-primary,
+      .btn-ghost {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .cta-headline {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       STICKY HEADER
+  ============================================================ -->
+  <header id="header">
+    <div class="container">
+      <a href="#" class="header-logo" aria-label="IV Encuentro ACEBRA">
+        <img src="assets/IV-Encuentro-Acebra-Blanco-2.svg" alt="IV Encuentro ACEBRA">
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="#about">Acerca</a></li>
+          <li><a href="#details">Detalles</a></li>
+          <li><a href="#location">Lugar</a></li>
+          <li><a href="#organizers">Organizadores</a></li>
+          <li><a href="#register" class="nav-cta">Inscribirse</a></li>
+        </ul>
+      </nav>
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil">
+    <a href="#about" class="mobile-link">Acerca</a>
+    <a href="#details" class="mobile-link">Detalles</a>
+    <a href="#location" class="mobile-link">Lugar</a>
+    <a href="#organizers" class="mobile-link">Organizadores</a>
+    <a href="#register" class="mobile-link mobile-cta">Inscribirse</a>
+  </nav>
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section id="hero" aria-label="Sección principal">
+
+    <!-- Animated geometric lines -->
+    <div class="hero-lines" aria-hidden="true">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <!-- Animated floating lines -->
+        <line x1="0" y1="200" x2="300" y2="200" stroke="rgba(253,236,77,0.12)" stroke-width="1"/>
+        <line x1="0" y1="201" x2="300" y2="201" stroke="rgba(253,236,77,0.06)" stroke-width="0.5"/>
+        <line x1="1140" y1="600" x2="1440" y2="600" stroke="rgba(113,192,230,0.15)" stroke-width="1"/>
+        <line x1="1140" y1="601" x2="1440" y2="601" stroke="rgba(113,192,230,0.07)" stroke-width="0.5"/>
+        <line x1="600" y1="0" x2="600" y2="120" stroke="rgba(253,236,77,0.1)" stroke-width="1"/>
+        <!-- Corner brackets -->
+        <path d="M60 60 L60 100 L100 100" stroke="rgba(253,236,77,0.2)" stroke-width="1" fill="none"/>
+        <path d="M1380 60 L1380 100 L1340 100" stroke="rgba(253,236,77,0.2)" stroke-width="1" fill="none"/>
+        <path d="M60 840 L60 800 L100 800" stroke="rgba(253,236,77,0.1)" stroke-width="1" fill="none"/>
+        <path d="M1380 840 L1380 800 L1340 800" stroke="rgba(253,236,77,0.1)" stroke-width="1" fill="none"/>
+        <!-- Large diagonal accent -->
+        <line x1="900" y1="0" x2="1440" y2="380" stroke="rgba(91,60,116,0.6)" stroke-width="200"/>
+        <line x1="950" y1="0" x2="1440" y2="330" stroke="rgba(61,39,80,0.4)" stroke-width="1"/>
+        <!-- Cross marks -->
+        <g stroke="rgba(253,236,77,0.15)" stroke-width="1">
+          <line x1="780" y1="740" x2="800" y2="740"/>
+          <line x1="790" y1="730" x2="790" y2="750"/>
+          <line x1="1200" y1="200" x2="1220" y2="200"/>
+          <line x1="1210" y1="190" x2="1210" y2="210"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- Decorative graphic (apoio-grafico) -->
+    <div class="hero-decor" aria-hidden="true">
+      <img src="apoio-grafico.svg" alt="">
+    </div>
+
+    <div class="hero-decor-tl" aria-hidden="true">
+      <img src="apoio-grafico.svg" alt="">
+    </div>
+
+    <!-- Content -->
+    <div class="hero-content">
+      <div class="container">
+
+        <div class="hero-eyebrow">Asociación de Científicos Españoles en Brasil</div>
+
+        <!-- Main SVG title - Color version -->
+        <div class="hero-title-svg">
+          <img
+            src="assets/IV-Encuentro-Acebra-Color-1.svg"
+            alt="IV Encuentro de la Asociación de Científicos Españoles en Brasil"
+          >
+        </div>
+
+        <div class="hero-subtitle-wrap">
+          <img src="./assets/subtitle.svg" alt="" class="hero-subtitle-svg">
+        </div>
+
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <div class="hero-meta-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+            </div>
+            <div>
+              <span class="hero-meta-label">Fecha</span>
+              <span class="hero-meta-value">22 y 23 Junio 2026</span>
+            </div>
+          </div>
+
+          <div class="hero-meta-item">
+            <div class="hero-meta-icon">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            </div>
+            <div>
+              <span class="hero-meta-label">Lugar</span>
+              <span class="hero-meta-value">Rio de Janeiro, Brasil</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#register" class="btn-primary">
+            Inscribirse
+            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </a>
+          <a href="#about" class="btn-ghost">Saber más</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <div class="about-left">
+          <div class="section-label reveal">Sobre el Evento</div>
+          <h2 class="section-title reveal reveal-delay-1">
+            Un espacio de <span>encuentro</span> y colaboración
+          </h2>
+          <div class="divider reveal reveal-delay-2"></div>
+
+          <p class="about-body reveal reveal-delay-2">
+            El <strong>IV Encuentro de la Asociación de Científicos Españoles en Brasil (ACEBRA)</strong>
+            reúne a investigadores, académicos, innovadores y actores institucionales de ambos países
+            para fomentar vínculos estratégicos entre Brasil y España en los ámbitos de la ciencia,
+            la cultura y la innovación.
+          </p>
+          <p class="about-body reveal reveal-delay-3">
+            A través de diálogos enriquecedores, mesas temáticas y espacios de networking,
+            el encuentro busca fortalecer las redes de cooperación bilateral y proyectar nuevas
+            iniciativas conjuntas que impulsen el desarrollo social, científico y tecnológico
+            de ambas naciones.
+          </p>
+
+          <div class="about-tags reveal reveal-delay-4">
+            <span class="about-tag">Ciencia</span>
+            <span class="about-tag">Cultura</span>
+            <span class="about-tag">Innovación</span>
+            <span class="about-tag">Educación</span>
+            <span class="about-tag">Cooperación</span>
+            <span class="about-tag">Tecnología</span>
+          </div>
+
+          <div class="about-stats">
+            <div class="about-stat reveal reveal-delay-1">
+              <div class="about-stat-num">IV</div>
+              <div class="about-stat-label">Edición del Encuentro ACEBRA</div>
+            </div>
+            <div class="about-stat reveal reveal-delay-2">
+              <div class="about-stat-num">2</div>
+              <div class="about-stat-label">Días de actividades y networking</div>
+            </div>
+            <div class="about-stat reveal reveal-delay-3">
+              <div class="about-stat-num">BR<br>ES</div>
+              <div class="about-stat-label">Cooperación bilateral Brasil — España</div>
+            </div>
+            <div class="about-stat reveal reveal-delay-4">
+              <div class="about-stat-num">RJ</div>
+              <div class="about-stat-label">Rio de Janeiro, Junio 2026</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-right">
+          <div class="about-visual reveal">
+            <blockquote class="about-quote">
+              "La educación como motor del desarrollo social y tecnológico es el eje que guía el diálogo entre nuestras comunidades científicas."
+            </blockquote>
+            <p class="about-quote-attr">— Tema central del IV Encuentro ACEBRA 2026</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EVENT DETAILS SECTION
+  ============================================================ -->
+  <section id="details">
+    <div class="container">
+      <div class="section-label reveal">Información del Evento</div>
+      <h2 class="section-title reveal reveal-delay-1">Detalles del <span>Encuentro</span></h2>
+      <div class="divider reveal reveal-delay-2"></div>
+
+      <div class="details-grid">
+
+        <div class="detail-card reveal reveal-delay-1">
+          <div class="detail-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zM7 12h5v5H7z"/></svg>
+          </div>
+          <div class="detail-card-label">Fechas</div>
+          <div class="detail-card-value">22 y 23 de<br>Junio 2026</div>
+          <div class="detail-card-sub">Lunes y Martes</div>
+        </div>
+
+        <div class="detail-card accent reveal reveal-delay-2">
+          <div class="detail-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3L2 12h3v9h14v-9h3L12 3zm0 2.5L19 12v8h-3v-5H8v5H5v-8l7-6.5z"/></svg>
+          </div>
+          <div class="detail-card-label">Sede</div>
+          <div class="detail-card-value">Fórum de Ciência e<br>Cultura da UFRJ</div>
+          <div class="detail-card-sub">Universidad Federal de Rio de Janeiro</div>
+        </div>
+
+        <div class="detail-card reveal reveal-delay-3">
+          <div class="detail-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          </div>
+          <div class="detail-card-label">Dirección</div>
+          <div class="detail-card-value">Av. Rui Barbosa, 762</div>
+          <div class="detail-card-sub">Flamengo, Rio de Janeiro – RJ<br>Brasil</div>
+        </div>
+
+        <div class="detail-card reveal reveal-delay-1">
+          <div class="detail-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          </div>
+          <div class="detail-card-label">Formato</div>
+          <div class="detail-card-value">Híbrido</div>
+          <div class="detail-card-sub">Presencial y transmisión en línea</div>
+        </div>
+
+        <div class="detail-card reveal reveal-delay-2">
+          <div class="detail-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22c1.1 0 2-.9 2-2h-4a2 2 0 002 2zm6-6V11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+          </div>
+          <div class="detail-card-label">Idiomas</div>
+          <div class="detail-card-value">Español / Portugués</div>
+          <div class="detail-card-sub">Evento bilingüe Brasil-España</div>
+        </div>
+
+        <div class="detail-card reveal reveal-delay-3">
+          <div class="detail-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+          </div>
+          <div class="detail-card-label">Participantes</div>
+          <div class="detail-card-value">Investigadores y Académicos</div>
+          <div class="detail-card-sub">Científicos, innovadores e instituciones</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LOCATION SECTION
+  ============================================================ -->
+  <section id="location">
+    <div class="container">
+      <div class="section-label reveal">Localización</div>
+      <h2 class="section-title reveal reveal-delay-1">Dónde nos <span>encontramos</span></h2>
+      <div class="divider reveal reveal-delay-2"></div>
+
+      <div class="location-wrapper">
+
+        <div class="location-info reveal">
+          <div class="location-address">
+            <p>
+              <strong>Fórum de Ciência e Cultura da UFRJ</strong>
+              Av. Rui Barbosa, 762<br>
+              Flamengo, Rio de Janeiro – RJ<br>
+              Brasil, CEP 22250-020
+            </p>
+            <div class="location-badge">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+              Rio de Janeiro, Brasil
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem;">
+            <div class="section-label" style="margin-bottom: 0.8rem;">Cómo llegar</div>
+            <p style="font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.7;">
+              El Fórum de Ciência e Cultura está ubicado en el barrio Flamengo,
+              fácilmente accesible en metro (estación Largo do Machado) y en bus
+              desde el centro y zona sur de Rio de Janeiro.
+            </p>
+          </div>
+        </div>
+
+        <div class="map-wrap reveal reveal-delay-2">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.4855!2d-43.1783!3d-22.9317!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f5f9e3d97ff%3A0x0!2sAv.+Rui+Barbosa%2C+762%2C+Flamengo%2C+Rio+de+Janeiro+-+RJ%2C+Brazil!5e0!3m2!1ses!2sbr!4v1620000000000"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localización del Fórum de Ciência e Cultura da UFRJ"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ORGANIZERS SECTION
+  ============================================================ -->
+  <section id="organizers">
+    <div class="container">
+      <div class="organizers-intro">
+        <div class="section-label reveal">Organizan y Apoyan</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          Organizadores y <span>Colaboradores</span>
+        </h2>
+        <div class="divider reveal reveal-delay-2" style="margin: 0 auto 0;"></div>
+      </div>
+
+      <div class="logos-strip reveal reveal-delay-2">
+        <img
+          src="barra-de-logos.png"
+          alt="Logos de organizadores y colaboradores: ACEBRA y entidades asociadas"
+        >
+      </div>
+
+      <p class="logos-note reveal">
+        Organización con el apoyo de instituciones académicas, culturales y de cooperación de Brasil y España.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESOURCES SECTION
+  ============================================================ -->
+  <section id="resources">
+    <div class="container">
+      <div class="section-label reveal">Documentos</div>
+      <h2 class="section-title reveal reveal-delay-1">Información y <span>materiales</span></h2>
+      <div class="divider reveal reveal-delay-2"></div>
+
+      <div class="resources-blocks">
+
+        <!-- 1. Program -->
+        <div class="resource-block reveal">
+          <div class="resource-block-left">
+            <div class="resource-block-number">01 — Programa</div>
+            <div class="resource-block-title">¡Programa del evento!</div>
+          </div>
+          <div class="resource-block-buttons">
+            <a href="#" class="btn-resource">
+              <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
+              Full Program (PDF)
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. Press Notes -->
+        <div class="resource-block reveal reveal-delay-1">
+          <div class="resource-block-left">
+            <div class="resource-block-number">02 — Prensa</div>
+            <div class="resource-block-title">Nota de prensa</div>
+          </div>
+          <div class="resource-block-buttons">
+            <a href="#" class="btn-resource">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 16h8v2H8v-2zm0-4h8v2H8v-2zm0-4h5v2H8V8z"/></svg>
+              Nota de Prensa en Castellano
+            </a>
+            <a href="#" class="btn-resource">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 16h8v2H8v-2zm0-4h8v2H8v-2zm0-4h5v2H8V8z"/></svg>
+              Nota de Imprensa em Português
+            </a>
+          </div>
+        </div>
+
+        <!-- 3. Graphic Materials -->
+        <div class="resource-block reveal reveal-delay-2">
+          <div class="resource-block-left">
+            <div class="resource-block-number">03 — Difusión</div>
+            <div class="resource-block-title">Materiales gráficos para difusión</div>
+          </div>
+          <div class="resource-block-buttons">
+            <a href="#" class="btn-resource">
+              <svg viewBox="0 0 24 24"><path d="M4 16v2h16v-2H4zm0-4v2h16v-2H4zm0-4v2h16V8H4zm0-4v2h16V4H4z"/><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/><path d="M8.5 13.5l2.5 3.01L14.5 12l4.5 6H5z"/></svg>
+              Materiales Gráficos
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FINAL CTA SECTION
+  ============================================================ -->
+  <section id="register">
+    <div class="container">
+      <div class="cta-inner">
+        <div class="section-label reveal">Participa</div>
+        <span class="cta-border-top reveal reveal-delay-1"></span>
+        <h2 class="cta-headline reveal reveal-delay-2">
+          Sé parte del<br><em>IV Encuentro ACEBRA</em>
+        </h2>
+        <p class="cta-body reveal reveal-delay-3">
+          Únete a la comunidad científica española en Brasil y contribuye al fortalecimiento
+          de los lazos entre Brasil y España en ciencia, cultura e innovación.
+          Las inscripciones ya están abiertas.
+        </p>
+        <div class="reveal reveal-delay-4">
+          <a href="#" class="btn-primary" style="display: inline-flex; font-size: 1.05rem; padding: 1.1rem 2.8rem;">
+            Inscribirse al Evento
+            <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-logo">
+          <img src="assets/IV-Encuentro-Acebra-Blanco-2.svg" alt="IV Encuentro ACEBRA 2026">
+        </div>
+
+        <div class="footer-center">
+          <p>
+            © 2026 Asociación de Científicos Españoles en Brasil — ACEBRA<br>
+            Contacto: <a href="mailto:info@acebrasil.org">info@acebrasil.org</a>
+            &nbsp;·&nbsp;
+            <a href="https://www.acebrasil.org" target="_blank" rel="noopener">acebrasil.org</a>
+          </p>
+          <p style="margin-top: 0.5rem; font-size: 0.75rem; opacity: 0.5;">
+            Rio de Janeiro · 22 y 23 Junio 2026
+          </p>
+        </div>
+
+        <div class="footer-right">
+          <!-- Instagram -->
+          <a href="#" class="footer-social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162S8.597 18.163 12 18.163s6.162-2.759 6.162-6.162S15.403 5.838 12 5.838zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <!-- LinkedIn -->
+          <a href="#" class="footer-social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" class="footer-social" aria-label="X (Twitter)">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // ─── Sticky header ─────────────────────────────────────────
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // ─── Hamburger menu ────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('open', isOpen);
+      hamburger.setAttribute('aria-expanded', isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close mobile nav on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    // ─── Scroll reveal ─────────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ─── Smooth scroll for anchor links ────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (e) => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const offset = 80;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
