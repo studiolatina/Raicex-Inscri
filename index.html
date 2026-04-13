@@ -1088,6 +1088,13 @@
       transform: translateY(1px);
     }
 
+    /* Botão desabilitado (em breve) */
+    .btn-resource.disabled {
+      opacity: 0.38;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
     @media (max-width: 768px) {
       .resource-block {
         flex-direction: column;
@@ -1397,7 +1404,7 @@
           <li><a href="#details">Detalles</a></li>
           <li><a href="#location">Lugar</a></li>
           <li><a href="#organizers">Organizadores</a></li>
-          <li><a href="#register" class="nav-cta">Inscribirse</a></li>
+          <li><a href="https://www.acebrasil.org/event-details/iv-encuentro-de-la-asociacion-de-cientificos-espanoles-en-brasil" target="_blank" rel="noopener" class="nav-cta">Inscribirse</a></li>
         </ul>
       </nav>
 
@@ -1415,7 +1422,7 @@
     <a href="#details" class="mobile-link">Detalles</a>
     <a href="#location" class="mobile-link">Lugar</a>
     <a href="#organizers" class="mobile-link">Organizadores</a>
-    <a href="#register" class="mobile-link mobile-cta">Inscribirse</a>
+    <a href="https://www.acebrasil.org/event-details/iv-encuentro-de-la-asociacion-de-cientificos-espanoles-en-brasil" target="_blank" rel="noopener" class="mobile-link mobile-cta">Inscribirse</a>
   </nav>
 
   <!-- ============================================================
@@ -1500,7 +1507,7 @@
         </div>
 
         <div class="hero-actions">
-          <a href="#register" class="btn-primary">
+          <a href="https://www.acebrasil.org/event-details/iv-encuentro-de-la-asociacion-de-cientificos-espanoles-en-brasil" target="_blank" rel="noopener" class="btn-primary">
             Inscribirse
             <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
           </a>
@@ -1742,33 +1749,35 @@
       <div class="resources-blocks">
 
         <!-- 1. Program -->
+        <!-- TODO: Substituir o href="#" pelo link do PDF do programa quando o cliente enviar -->
         <div class="resource-block reveal">
           <div class="resource-block-left">
             <div class="resource-block-number">01 — Programa</div>
             <div class="resource-block-title">¡Programa del evento!</div>
           </div>
           <div class="resource-block-buttons">
-            <a href="#" class="btn-resource">
+            <a href="#" class="btn-resource disabled" aria-disabled="true">
               <svg viewBox="0 0 24 24"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-8.5 7.5c0 .83-.67 1.5-1.5 1.5H9v2H7.5V7H10c.83 0 1.5.67 1.5 1.5v1zm5 2c0 .83-.67 1.5-1.5 1.5h-2.5V7H15c.83 0 1.5.67 1.5 1.5v3zm4-3H19v1h1.5V11H19v2h-1.5V7h3v1.5zM9 9.5h1v-1H9v1zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm10 5.5h1v-3h-1v3z"/></svg>
-              Full Program (PDF)
+              Próximamente
             </a>
           </div>
         </div>
 
         <!-- 2. Press Notes -->
+        <!-- TODO: Substituir os href="#" pelos links das notas de prensa quando o cliente enviar -->
         <div class="resource-block reveal reveal-delay-1">
           <div class="resource-block-left">
             <div class="resource-block-number">02 — Prensa</div>
             <div class="resource-block-title">Nota de prensa</div>
           </div>
           <div class="resource-block-buttons">
-            <a href="#" class="btn-resource">
+            <a href="#" class="btn-resource disabled" aria-disabled="true">
               <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 16h8v2H8v-2zm0-4h8v2H8v-2zm0-4h5v2H8V8z"/></svg>
-              Nota de Prensa en Castellano
+              Castellano — Próximamente
             </a>
-            <a href="#" class="btn-resource">
+            <a href="#" class="btn-resource disabled" aria-disabled="true">
               <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 16h8v2H8v-2zm0-4h8v2H8v-2zm0-4h5v2H8V8z"/></svg>
-              Nota de Imprensa em Português
+              Português — Próximamente
             </a>
           </div>
         </div>
@@ -1780,9 +1789,13 @@
             <div class="resource-block-title">Materiales gráficos para difusión</div>
           </div>
           <div class="resource-block-buttons">
-            <a href="#" class="btn-resource">
-              <svg viewBox="0 0 24 24"><path d="M4 16v2h16v-2H4zm0-4v2h16v-2H4zm0-4v2h16V8H4zm0-4v2h16V4H4z"/><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z"/><path d="M8.5 13.5l2.5 3.01L14.5 12l4.5 6H5z"/></svg>
-              Materiales Gráficos
+            <a
+              href="https://a3c519bb-ead0-4959-bea1-a66d2e519124.usrfiles.com/archives/a3c519_5f816dfca0554cdfb1032d5f73c08d8a.zip"
+              class="btn-resource"
+              download
+            >
+              <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zm-8 2V5h2v6h1.17L12 13.17 9.83 11H11zm-6 7h14v2H5z"/></svg>
+              Descargar Materiales (ZIP)
             </a>
           </div>
         </div>
@@ -1808,7 +1821,13 @@
           Las inscripciones ya están abiertas.
         </p>
         <div class="reveal reveal-delay-4">
-          <a href="#" class="btn-primary" style="display: inline-flex; font-size: 1.05rem; padding: 1.1rem 2.8rem;">
+          <a
+            href="https://www.acebrasil.org/event-details/iv-encuentro-de-la-asociacion-de-cientificos-espanoles-en-brasil"
+            target="_blank"
+            rel="noopener"
+            class="btn-primary"
+            style="display: inline-flex; font-size: 1.05rem; padding: 1.1rem 2.8rem;"
+          >
             Inscribirse al Evento
             <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
           </a>
