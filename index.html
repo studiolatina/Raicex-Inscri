@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>IV Encuentro ACEBRA 2026 — Rio de Janeiro</title>
   <meta name="description" content="IV Encuentro de la Asociación de Científicos Españoles en Brasil. Estrategias de Cooperación Brasil-España en Ciencia, Cultura e Innovación. 22 y 23 Junio 2026, Rio de Janeiro.">
   <link rel="stylesheet" href="https://use.typekit.net/cvw7dfq.css">
@@ -68,9 +68,9 @@
       right: 0;
       width: 100%;
       z-index: 100;
-      padding: 1rem 0;
+      padding: 1rem env(safe-area-inset-right, 0) 1rem env(safe-area-inset-left, 0);
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
-    }
+}
 
     #header.scrolled {
       background: var(--purple-dk);
