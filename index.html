@@ -256,10 +256,12 @@
     }
 
     .hero-content .container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 2rem;
+      padding-left: max(2rem, env(safe-area-inset-left));
+      padding-right: max(2rem, env(safe-area-inset-right));
     }
 
     .hero-eyebrow {
