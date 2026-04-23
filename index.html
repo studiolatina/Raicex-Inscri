@@ -63,14 +63,12 @@
     /* HEADER */
     #header {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       width: 100%;
       z-index: 100;
       padding: 1rem env(safe-area-inset-right, 0) 1rem env(safe-area-inset-left, 0);
       transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
-}
+    }
 
     #header.scrolled {
       background: var(--purple-dk);
@@ -231,9 +229,9 @@
 
     .hero-decor {
       position: absolute;
-      right: -80px; bottom: -60px;
-      width: 55vw;
-      max-width: 680px;
+      right: -20px; bottom: -60px;
+      width: 40vw;
+      max-width: 480px;
       opacity: 0.18;
       z-index: 1;
       pointer-events: none;
@@ -254,17 +252,14 @@
       position: relative;
       z-index: 2;
       width: 100%;
-      /* Reduzido de 9rem/6rem para caber no viewport desktop */
-      padding: 1rem 0 1rem;
+      padding: 6rem 0 3rem;
     }
 
     .hero-content .container {
-      width: 100%;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 2rem;
-      padding-left: max(2rem, env(safe-area-inset-left));
-      padding-right: max(2rem, env(safe-area-inset-right));
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
     }
 
     .hero-eyebrow {
@@ -955,7 +950,7 @@
 
       .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
 
-      .hero-decor { width: 90vw; right: -30px; opacity: 0.12; }
+      .hero-decor { width: 70vw; right: -20px; opacity: 0.12; }
 
       .about-stats { grid-template-columns: 1fr 1fr; }
 
@@ -1228,20 +1223,19 @@
           </div>
         </div>
 
-        <!-- TODO: Substituir os href="#" pelos links das notas de prensa quando o cliente enviar -->
         <div class="resource-block">
           <div class="resource-block-left">
             <div class="resource-block-number">02 — Prensa</div>
             <div class="resource-block-title">Nota de prensa</div>
           </div>
           <div class="resource-block-buttons">
-            <a href="#" class="btn-resource disabled" aria-disabled="true">
+            <a href="https://a3c519bb-ead0-4959-bea1-a66d2e519124.usrfiles.com/ugd/a3c519_e3767d50a87a40b6a3d002c503afbb05.pdf" target="_blank" rel="noopener" class="btn-resource">
               <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 16h8v2H8v-2zm0-4h8v2H8v-2zm0-4h5v2H8V8z"/></svg>
-              Castellano — Próximamente
+              Castellano
             </a>
-            <a href="#" class="btn-resource disabled" aria-disabled="true">
+            <a href="https://a3c519bb-ead0-4959-bea1-a66d2e519124.usrfiles.com/ugd/a3c519_bc41f6f08a244687b092950cc97fb3d4.pdf" target="_blank" rel="noopener" class="btn-resource">
               <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-1 7V3.5L18.5 9H13zM8 16h8v2H8v-2zm0-4h8v2H8v-2zm0-4h5v2H8V8z"/></svg>
-              Português — Próximamente
+              Português
             </a>
           </div>
         </div>
